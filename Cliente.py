@@ -6,7 +6,7 @@ class Cliente:
     def realizar_transacao(self, conta, transacao):
         transacao.registrar(conta)
         
-    def adicionar_conta(self. conta):
+    def adicionar_conta(self, conta):
         self.contas.append(conta)
         
         

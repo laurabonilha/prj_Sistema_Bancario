@@ -1,3 +1,5 @@
+from Historico import Historico
+
 class Conta:
     def __init__(self, numero, cliente):
         self._saldo = 0
@@ -50,4 +52,6 @@ class Conta:
         else:
             print('Operação falhou. Valor informado é inválido')
             return False
+        
+        return True
         
