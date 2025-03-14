@@ -40,7 +40,10 @@ def main():
                 return False
             
             case '1':
-                print('---Depósito---')
+                pass
+                
+            case '4':
+                Conta.nova_conta(var_clssMenu.clientes)
                 
                 
             case '6':

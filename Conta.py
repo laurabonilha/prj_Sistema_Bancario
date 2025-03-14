@@ -1,5 +1,7 @@
 from Historico import Historico
 
+import random
+
 class Conta:
     def __init__(self, numero, cliente):
         self._saldo = 0
@@ -7,10 +9,30 @@ class Conta:
         self._agencia = '0001'
         self._cliente = cliente
         self._historico = Historico()
-        
+    
+    @staticmethod
+    def verifica_cpf_cadastrado(cpf, lista_clientes):
+        '''Verifica se o usuário está cadastrado e apto a abrir uma nova conta'''
+        for cliente in lista_clientes:
+            if cliente.cpf == cpf:
+                return True
+        return False
+    
     @classmethod
-    def nova_conta(cls, cliente, numero):
-        return cls (numero, cliente)
+    def nova_conta(cls, lista_clientes):
+        print('---Criando nova conta---')
+        var_strCpfInformado = input('Informe seu CPF para cadastrar nova conta: ')
+        var_objCliente = Conta.verifica_cpf_cadastrado(cpf=var_strCpfInformado, lista_clientes=lista_clientes)
+        if var_objCliente:
+            print('Seu CPF está regularizado! Seguindo com a criação da sua conta...')
+            var_intNumConta = random.randint(10000, 99999)
+            var_objNovaConta = cls(var_intNumConta, var_objCliente)
+            print(f'Nova conta {var_intNumConta} criada com sucesso!')
+            return var_objNovaConta
+        else:
+            print('Não foi possível encontrar nenhum cadastro com esse CPF. Favor cadastrar-se primeiro!')
+            return
+        
     
     @property
     def saldo(self):
