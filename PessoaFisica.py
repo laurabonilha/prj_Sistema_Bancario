@@ -15,8 +15,8 @@ class PessoaFisica(Cliente):
                 return True
         return False
     
-    @staticmethod
-    def criar_novo_usuario(lista_clientes):
+    @classmethod
+    def criar_novo_usuario(cls, lista_clientes):
         '''Cria um novo usuário pessoa física'''
         print('---Cadastro de novo usuário - Pessoa Física')
         var_strNomeNovoUsuario = input('Informe seu nome: ')
@@ -28,10 +28,11 @@ class PessoaFisica(Cliente):
             print('CPF já foi cadastro. Não é possível criar um novo usuário com este CPF')
             return
         
-        # Cria o novo cliente Pessoa Física
-        var_objNovoCliente = PessoaFisica(nome=var_strNomeNovoUsuario, data_nascimento=var_strNascNovoUsuario, cpf=var_strCpfNovoUsuario, endereco=var_strEnderecoNovoUsuario)
+        print("Novo usuário cadastrado com sucesso!\n", var_objNovoUsuario)
         
-        lista_clientes.append(var_objNovoCliente)
+        var_objNovoUsuario = cls(nome=var_strNomeNovoUsuario, data_nascimento=var_strNascNovoUsuario, cpf=var_strCpfNovoUsuario, endereco=var_strEnderecoNovoUsuario)
+        lista_clientes.append(var_objNovoUsuario)
         
-        print(f"Novo usuário cadastrado com sucesso!\nNome: {var_strNomeNovoUsuario}\nCPF: {var_strCpfNovoUsuario}")
-        
+        def __str__(self):
+            '''Padroniza a apresentação dos dados do usuário cadastrado - PF'''
+            return f"Nome: {self.nome}\nCPF: {self.cpf}\nData de Nascimento: {self.data_nascimento}\nEndereço: {self.endereco}"

@@ -41,12 +41,11 @@ def main():
             
             case '1':
                 print('---Depósito---')
-                var_clssMenu.depositar()
+                
                 
             case '6':
-                PessoaFisica.criar_novo_usuario(var_clssMenu.clientes)   
-            
-            
+                PessoaFisica.criar_novo_usuario(var_clssMenu.clientes)
+                
                
             case _:
                 print("Opção inválida!")
